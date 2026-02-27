@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting a New Role Live — First × Greenhouse</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F3EFE8;
+    --bg-dark: #2C2C2C;
+
+    --text: #2C2C2C;
+    --text-secondary: #5C5C5C;
+    --text-muted: #8A8A8A;
+
+    --terracotta: #C4703F;
+    --terracotta-light: #F5E6D8;
+    --sage: #6B7F5E;
+    --sage-light: #E8EDE4;
+    --blue-muted: #5B7B9A;
+    --blue-light: #E4ECF2;
+    --border: #E2DDD5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Roboto', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 0 80px;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    padding: 0 0 48px;
+    border-bottom: 2px solid var(--terracotta);
+    margin-bottom: 48px;
+  }
+  .header-meta {
+    font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--terracotta); margin-bottom: 16px;
+  }
+  .header-title {
+    font-family: 'Roboto', -apple-system, sans-serif;
+    font-size: 46px; font-weight: 400;
+    line-height: 1.15; color: var(--text);
+    margin-bottom: 16px;
+  }
+  .header-subtitle {
+    font-size: 17px; color: var(--text-secondary);
+    line-height: 1.7; max-width: 580px;
+  }
+  .header-detail {
+    margin-top: 24px; font-size: 14px; color: var(--text-muted);
+  }
+  .header-detail strong { color: var(--text-secondary); font-weight: 600; }
+
+  /* ─── BODY TEXT ─── */
+  .body-text {
+    font-size: 16px; line-height: 1.8;
+    color: var(--text-secondary); margin-bottom: 20px;
+    max-width: 640px;
+  }
+  .body-text strong { color: var(--text); font-weight: 600; }
+
+  /* ─── SECTION HEADINGS ─── */
+  .section-h2 {
+    font-family: 'Roboto', -apple-system, sans-serif;
+    font-size: 32px; font-weight: 400;
+    color: var(--text); margin: 56px 0 8px;
+    line-height: 1.2;
+  }
+  .section-h2 .step-label {
+    color: var(--terracotta);
+  }
+  .section-h2-rule {
+    width: 60px; height: 3px;
+    background: var(--terracotta);
+    margin: 12px 0 24px;
+    border: none;
+  }
+
+  .section-h3 {
+    font-family: 'Roboto', -apple-system, sans-serif;
+    font-size: 24px; font-weight: 400;
+    color: var(--text); margin: 44px 0 8px;
+    line-height: 1.3;
+  }
+  .section-h3-rule {
+    width: 40px; height: 2px;
+    background: var(--sage);
+    margin: 8px 0 20px;
+    border: none;
+  }
+
+  /* ─── SCREENSHOTS ─── */
+  .screenshot {
+    margin: 28px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  }
+  .screenshot img { width: 100%; display: block; }
+  .screenshot-cap {
+    padding: 10px 16px;
+    font-size: 13px; color: var(--text-muted);
+    font-style: italic;
+    border-top: 1px solid var(--border);
+    background: var(--bg-muted);
+  }
+
+  /* ─── CALLOUTS ─── */
+  .callout {
+    margin: 28px 0;
+    padding: 20px 24px;
+    border-radius: 6px;
+    border-left: 4px solid;
+  }
+  .callout-tip {
+    background: var(--sage-light);
+    border-color: var(--sage);
+  }
+  .callout-info {
+    background: var(--blue-light);
+    border-color: var(--blue-muted);
+  }
+  .callout-label {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .callout-tip .callout-label { color: var(--sage); }
+  .callout-info .callout-label { color: var(--blue-muted); }
+  .callout-body {
+    font-size: 15px; line-height: 1.7; color: var(--text-secondary);
+  }
+  .callout-body strong { color: var(--text); font-weight: 600; }
+
+  /* ─── DETAIL CARDS ─── */
+  .detail-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin: 24px 0 32px;
+  }
+  .detail-card {
+    padding: 22px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: box-shadow 0.15s;
+  }
+  .detail-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+  .detail-card.full { grid-column: 1 / -1; }
+
+  .dc-title {
+    font-size: 15px; font-weight: 700; color: var(--text);
+    margin-bottom: 8px;
+  }
+  .dc-title .dc-emoji { margin-right: 6px; }
+  .dc-body {
+    font-size: 14px; line-height: 1.7; color: var(--text-secondary);
+  }
+  .dc-tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;
+  }
+  .tag {
+    display: inline-block; padding: 2px 10px;
+    border-radius: 100px; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+  .tag-reject { background: #F5E0E0; color: #9B3B3B; }
+  .tag-required { background: var(--terracotta-light); color: var(--terracotta); }
+  .tag-preferred { background: #F5F0D8; color: #8A7A2F; }
+
+  /* ─── PRIORITY KEY ─── */
+  .priority-key {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    padding: 18px 24px; margin: 20px 0 28px;
+    background: var(--bg-muted); border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .pk-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13.5px; color: var(--text-secondary);
+  }
+  .pk-item strong { color: var(--text); font-weight: 600; }
+  .pk-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .pk-dot.reject { background: #D14B4B; }
+  .pk-dot.required { background: #E5A832; }
+  .pk-dot.preferred { background: #A0A0A0; }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px; margin: 56px 0;
+    background: var(--border);
+  }
+
+  /* ─── CHECKLIST ─── */
+  .checklist {
+    margin: 24px 0; padding: 0; list-style: none;
+  }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 0;
+    font-size: 15px; color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-box {
+    width: 20px; height: 20px; flex-shrink: 0;
+    border: 2px solid var(--border);
+    border-radius: 4px; margin-top: 2px;
+    background: var(--bg-card);
+  }
+
+  /* ─── SUPPORT ─── */
+  .support {
+    margin-top: 48px; padding: 28px 32px;
+    background: var(--bg-muted); border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .support h3 {
+    font-family: 'Roboto', -apple-system, sans-serif;
+    font-size: 20px; font-weight: 400; margin-bottom: 8px;
+  }
+  .support p { font-size: 15px; color: var(--text-secondary); }
+  .support a { color: var(--terracotta); text-decoration: none; font-weight: 600; }
+  .support a:hover { text-decoration: underline; }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    margin-top: 56px; padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--text-muted);
+  }
+  .footer-logo {
+    font-weight: 800; font-size: 16px; color: var(--terracotta);
+  }
+
+  @media (max-width: 640px) {
+    .page { padding: 32px 20px 60px; }
+    .header-title { font-size: 34px; }
+    .section-h2 { font-size: 26px; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .priority-key { flex-direction: column; gap: 10px; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .screenshot { box-shadow: none; }
+    .detail-card:hover { box-shadow: none; }
+  }
+
+  /* ─── COLLAPSIBLE STEPS ─── */
+  .step {
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+    overflow: hidden;
+  }
+  .step[open] {
+    background: var(--bg-card);
+    border-color: var(--border);
+  }
+  .step-summary {
+    font-family: 'Roboto', -apple-system, sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.2;
+    padding: 20px 24px 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .step-content {
+    padding: 0 24px 24px;
+  }
+  .step .step-label {
+    color: var(--terracotta);
+  }
+
+  /* Override h3 margins inside steps */
+  .step-content .section-h3 {
+    margin-top: 36px;
+  }
+
+
+  .screenshot-placeholder {
+    width: 100%;
+    padding: 80px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-muted);
+    color: var(--text-muted);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ─── COLLAPSIBLE SUBSTEPS ─── */
+  .substep {
+    margin: 16px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+    overflow: hidden;
+  }
+  .substep[open] {
+    background: var(--bg-card);
+    border-color: var(--border);
+  }
+  .substep-summary {
+    font-family: 'Roboto', -apple-system, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.3;
+    padding: 16px 20px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .substep-summary::-webkit-details-marker { display: none; }
+  .substep-summary::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236B7F5E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.2s ease;
+  }
+  .substep:not([open]) .substep-summary::before {
+    transform: rotate(-90deg);
+  }
+  .substep:not([open]) .substep-summary:hover {
+    background: var(--bg-muted);
+  }
+  .substep-content {
+    padding: 0 20px 20px;
+  }
+  .substep-content .body-text:first-child {
+    margin-top: 0;
+  }
+  .substep-content .detail-grid {
+    margin-top: 16px;
+  }
+  .substep-content .priority-key {
+    margin-top: 12px;
+  }
+
+  /* ─── COLLAPSIBLE CRITERIA ─── */
+  .criteria-list {
+    margin: 20px 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .criteria-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+    overflow: hidden;
+  }
+  .criteria-item[open] {
+    border-color: var(--border);
+  }
+  .criteria-summary {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    padding: 14px 18px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .criteria-summary::-webkit-details-marker { display: none; }
+  .criteria-summary::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin-left: auto;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238A8A8A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.2s ease;
+  }
+  .criteria-item:not([open]) .criteria-summary::after {
+    transform: rotate(-90deg);
+  }
+  .criteria-item:not([open]) .criteria-summary:hover {
+    background: var(--bg-muted);
+  }
+  .criteria-content {
+    padding: 0 18px 18px;
+    border-top: 1px solid var(--border);
+  }
+  .criteria-body {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-top: 14px;
+  }
+  .criteria-body strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .criteria-content .dc-tags {
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ═══════════════════ HEADER ═══════════════════ -->
+  <div class="header">
+    <div class="header-meta">First × Greenhouse</div>
+    <h1 class="header-title">Getting a New Role Live</h1>
+    <p class="header-subtitle">
+      A step-by-step guide to publishing roles in First for Greenhouse users.
+    </p>
+    <p class="header-detail">
+      <!-- ✏️ SWAP CLIENT NAME -->
+      Prepared for <strong>Wayve</strong> by First
+    </p>
+  </div>
+
+  <!-- ═══════════════════ INTRO ═══════════════════ -->
+  <p class="body-text" style="font-size: 17px; color: var(--text); margin-bottom: 32px;">
+    First screens every applicant against your criteria automatically — so your team spends
+    time interviewing, not sifting through CVs.
+  </p>
+
+  
+
+  <p class="body-text">
+    This guide walks through the three steps to get a role live: <strong>syncing roles from
+    Greenhouse</strong>, <strong>configuring your AI screening criteria</strong>, and
+    <strong>reviewing candidates and refining criteria</strong>.
+  </p>
+
+
+  <!-- ═══════════════════ STEP 1 ═══════════════════ -->
+  <div class="step">
+  <div class="step-summary"><span class="step-label">Step 1.</span> Create your role in Greenhouse</div>
+  <div class="step-content">
+
+  <p class="body-text">
+    Create your role in Greenhouse as usual. When you do, it will automatically be imported into First — no manual import needed.
+  </p>
+
+  <p class="body-text">
+    A role will go live on the careers site when two conditions are met: the job is <strong style="color: var(--text);">open</strong>, and it has an <strong style="color: var(--text);">external job post set to live</strong>. To unpublish a role, just change either of those things in Greenhouse.
+  </p>
+
+  <p class="body-text">
+    The role will then appear in First. Now click <strong style="color: var(--text);">Add Criteria</strong> on the role to go straight into the setup page where you'll configure the application process.
+  </p>
+
+  <div style="text-align: center;">
+    <img src="greenhouse-role.png?v=2" alt="Creating a role in Greenhouse" style="width:95%; border-radius: 8px; margin: 12px 0 8px;">
+  </div>
+
+  <!-- ═══════════════════ STEP 2 ═══════════════════ -->
+  </div>
+  </div>
+
+  <div class="step">
+  <div class="step-summary"><span class="step-label">Step 2.</span> Configure your screening criteria & questions</div>
+  <div class="step-content">
+
+  <p class="body-text">
+    This is where you set up the criteria that every candidate is assessed against — requirements,
+    skills, experience, and screening questions. Everything in step 2 happens within the Application Process page shown here, so this is the only screen you need to work with.
+  </p>
+
+  <div style="text-align: center;">
+    <img src="screenshot-application-process.png" alt="Application Process page in First" style="width:80%; border-radius: 8px; margin: 12px 0 8px;">
+  </div>
+
+
+  
+
+  
+
+
+  <!-- ─── CHECK REQUIREMENTS ─── -->
+  <details class="substep">
+  <summary class="substep-summary">Using the AI assistant to set up roles</summary>
+  <div class="substep-content">
+
+  <p class="body-text">
+    Instead of configuring everything manually, the AI Assistant in Role Settings can read your job description and generate criteria and questions for you.
+  </p>
+  <p class="body-text">
+    Use it from the start to get a solid foundation, or fire it up later to make changes to an existing setup. You can have a back and forth with it to sense check adjustments before committing.
+  </p>
+
+  <div style="text-align: center;">
+    <img src="ai-assistant.png" alt="AI Assistant in Role Settings" style="width:80%; border-radius: 8px; margin: 12px 0 8px;">
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-label">Tip</div>
+    <div class="callout-body">
+      If there's criteria you're looking for that isn't in the job description, you can chat with the AI to get it added and sense check it. Try asking: <em>"Besides what's on the spec, is there anything else I should be looking for?"</em>
+    </div>
+  </div>
+
+  </div>
+  </details>
+
+  <details class="substep">
+  <summary class="substep-summary">Collect Personal Details</summary>
+  <div class="substep-content">
+
+  <p class="body-text">
+    Basic contact information collected from every candidate at the start of the application.
+    Most of these are required by default — they're needed to process applications and
+    contact candidates. No scoring is applied to these responses.
+  </p>
+
+  <div style="text-align: center;">
+    <img src="collect-personal-details.png" alt="Collect personal details" style="width:95%; border-radius: 8px; margin: 12px 0 8px;">
+  </div>
+
+  <div class="criteria-list">
+
+    <div class="criteria-item" style="padding: 14px 18px;">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 0;"><span class="dc-emoji">👤</span> Full Name</p>
+      <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.6;">Enabled by default. The candidate's full legal name.</p>
+    </div>
+
+    <div class="criteria-item" style="padding: 14px 18px;">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 0;"><span class="dc-emoji">💬</span> Preferred Name</p>
+      <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.6;">Enabled by default. The name the candidate prefers to go by.</p>
+    </div>
+
+    <div class="criteria-item" style="padding: 14px 18px;">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 0;"><span class="dc-emoji">📧</span> Email Address</p>
+      <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.6;">Enabled by default. Used for all application communications and synced back to Greenhouse.</p>
+    </div>
+
+    <div class="criteria-item" style="padding: 14px 18px;">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 0;"><span class="dc-emoji">📱</span> Mobile Number</p>
+      <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.6;">Enabled by default. Helpful if your team prefers to reach out by phone for shortlisted candidates.</p>
+    </div>
+
+    <div class="criteria-item" style="padding: 14px 18px;">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 0;"><span class="dc-emoji">♿</span> Reasonable Adjustments <span style="font-weight:400; font-size:13px; color:var(--text-muted);">(optional)</span></p>
+      <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.6;">Asks whether the candidate needs any reasonable adjustments during the application or interview process. This helps your team prepare accommodations in advance and demonstrates an inclusive hiring process from the start.</p>
+    </div>
+
+    <div class="criteria-item" style="padding: 14px 18px;">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 0;"><span class="dc-emoji">➕</span> Add New</p>
+      <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.6;">Choose a prefilled question from the dropdown or build your own. To reiterate, no scoring is applied to responses.</p>
+    </div>
+
+  </div>
+
+  </div>
+  </details>
+
+  <details class="substep">
+  <summary class="substep-summary">Check Requirements</summary>
+  <div class="substep-content">
+
+  <p class="body-text">
+    Logistical essentials checked upfront so unviable candidates are flagged early. Include as many as you need.
+  </p>
+
+  <div style="text-align: center;">
+    <img src="check-requirements.png" alt="Check requirements" style="width:95%; border-radius: 8px; margin: 12px 0 8px;">
+  </div>
+
+  <div class="criteria-list">
+
+    <div class="criteria-item" style="padding: 14px 18px;">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 0;"><span class="dc-emoji">📍</span> Right to Work</p>
+      <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.6;">Checks the candidate has the legal right to work where the role is based. Filters out candidates who'd need sponsorship you can't offer.</p>
+    </div>
+
+    <div class="criteria-item" style="padding: 14px 18px;">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 0;"><span class="dc-emoji">🛂</span> Visa Sponsorship</p>
+      <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.6;">Asks if the candidate requires visa sponsorship. Use alongside Right to Work for a full eligibility picture.</p>
+    </div>
+
+    <div class="criteria-item" style="padding: 14px 18px;">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 0;"><span class="dc-emoji">💰</span> Salary Expectations</p>
+      <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.6;">Captures salary expectations upfront. Flags misalignment early when the role has fixed banding or a tight budget.</p>
+    </div>
+
+    <div class="criteria-item" style="padding: 14px 18px;">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 0;"><span class="dc-emoji">📅</span> Availability</p>
+      <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.6;">Asks about notice period and earliest start date. Useful when you need someone by a specific date or want to prioritise candidates who can start sooner.</p>
+    </div>
+
+    <div class="criteria-item" style="padding: 14px 18px;">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 0;"><span class="dc-emoji">🏢</span> Onsite / Hybrid / Remote</p>
+      <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.6;">Confirms the candidate's working model preference. Filters out mismatches when the role has a strict location requirement.</p>
+    </div>
+
+    <div class="criteria-item" style="padding: 14px 18px;">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 0;"><span class="dc-emoji">➕</span> Add New</p>
+      <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.6;">Add custom requirements — e.g. security clearance, driving licence, or anything else specific to the role. These can be single or multiple choice.</p>
+    </div>
+
+  </div>
+
+  <div class="priority-key" style="margin-top: 28px; padding: 14px 20px; gap: 0; flex-direction: column;">
+    <p style="font-size: 13px; font-weight: 600; color: var(--text); margin: 0 0 6px 0;">Priority levels</p>
+    <p style="font-size: 12.5px; color: var(--text-secondary); margin: 0 0 8px 0; line-height: 1.5;">Each criterion below can be assigned one of these levels.</p>
+    <div class="pk-item" style="margin-bottom: 2px;"><div class="pk-dot reject"></div> <strong>Reject if not met</strong> — marked for rejection</div>
+    <div class="pk-item" style="margin-bottom: 2px;"><div class="pk-dot required"></div> <strong>Required to shortlist</strong> — must have to enter shortlist</div>
+    <div class="pk-item"><div class="pk-dot preferred"></div> <strong>Preferred</strong> — boosts score, won't reject</div>
+  </div>
+
+  <div class="callout callout-tip" style="margin-top: 16px;">
+    <div class="callout-label">Tip</div>
+    <div class="callout-body">
+      Some criteria support <strong>hints</strong> — context shown to the candidate alongside the question, e.g. your office location or salary banding. Hints don't affect scoring, they just help candidates answer accurately.
+    </div>
+  </div>
+
+
+  <!-- ─── CHECK SKILLS AND EXPERIENCE ─── -->
+  </div>
+  </details>
+
+  <details class="substep">
+  <summary class="substep-summary">Check Skills and Experience</summary>
+  <div class="substep-content">
+
+  <p class="body-text">
+    This is where you define the experience and expertise the role requires. The AI reads each
+    candidate's CV and evaluates them against the criteria you set. Each criterion has a priority
+    level that determines how it affects scoring.
+  </p>
+
+  <div style="text-align: center;">
+    <img src="check-skills-experience.png" alt="Check skills and experience" style="width:95%; border-radius: 8px; margin: 12px 0 8px;">
+  </div>
+
+  <div class="criteria-list">
+
+    <details class="criteria-item">
+      <summary class="criteria-summary"><span class="dc-emoji">💼</span> Past Roles</summary>
+      <div class="criteria-content">
+        <p class="criteria-body">Checks whether a candidate has experience in specific roles. This isn't a keyword match — the AI infers relevant experience, including similar and equivalent job titles.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Define the role:</strong> Type the job title you're looking for. Use the suggest function to surface common titles or functional areas — the AI can also suggest similar titles to broaden or narrow your search.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Set minimum experience:</strong> Choose the minimum time in this type of role, in years or months. Set to 0 if you don't mind how long — the AI will still check for relevant experience, just without a minimum threshold.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Set a priority level:</strong> <span class="pk-dot reject" style="display:inline-block; vertical-align:middle;"></span> Reject if not met, <span class="pk-dot required" style="display:inline-block; vertical-align:middle;"></span> Required to shortlist, or <span class="pk-dot preferred" style="display:inline-block; vertical-align:middle;"></span> Preferred.</p>
+        <p class="criteria-body">You can add multiple past role criteria per role — e.g. one required and one preferred.</p>
+        <div class="screenshot" style="margin-top: 16px;">
+    <img src="check-past-roles.png" alt="Check Past Roles screen">
+    <div class="screenshot-cap">The Check Past Roles screen — add job titles, set minimum experience, and choose a priority level.</div>
+  </div>
+      
+    </details>
+
+    <details class="criteria-item">
+      <summary class="criteria-summary"><span class="dc-emoji">🏗️</span> Past Companies</summary>
+      <div class="criteria-content">
+        <p class="criteria-body">Checks whether a candidate has worked at specific companies. Enter the company names you want to see on their CV — the AI checks their work history for matches.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Set a priority level:</strong> <span class="pk-dot reject" style="display:inline-block; vertical-align:middle;"></span> Reject if not met, <span class="pk-dot required" style="display:inline-block; vertical-align:middle;"></span> Required to shortlist, or <span class="pk-dot preferred" style="display:inline-block; vertical-align:middle;"></span> Preferred.</p>
+        <div class="screenshot" style="margin-top: 16px;">
+          <img src="check-past-companies.png" alt="Check past companies screen">
+          <div class="screenshot-cap">The Check Past Companies screen — add company names and set importance level.</div>
+        </div>
+
+    </details>
+
+    <details class="criteria-item">
+      <summary class="criteria-summary"><span class="dc-emoji">🏭</span> Industry Experience</summary>
+      <div class="criteria-content">
+        <p class="criteria-body">Checks whether a candidate has worked in specific industries or sectors. Unlike Past Companies, this is about the industry, not the employer.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Add industries:</strong> Add one or more industries relevant to the role. Each is a separate criterion with its own importance level — e.g. require Automotive, prefer Robotics.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Set minimum time:</strong> Optionally set a minimum in years or months — e.g. "1+ year in Automotive".</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Set a priority level:</strong> <span class="pk-dot reject" style="display:inline-block; vertical-align:middle;"></span> Reject if not met, <span class="pk-dot required" style="display:inline-block; vertical-align:middle;"></span> Required to shortlist, or <span class="pk-dot preferred" style="display:inline-block; vertical-align:middle;"></span> Preferred.</p>
+        <div class="screenshot" style="margin-top: 16px;">
+          <img src="check-industry-experience.png" alt="Check industry experience screen">
+          <div class="screenshot-cap">The Check Industry Experience screen — add industries, set importance and minimum time per industry.</div>
+        </div>
+
+    </details>
+
+    <details class="criteria-item">
+      <summary class="criteria-summary"><span class="dc-emoji">🔧</span> Skills and Keywords</summary>
+      <div class="criteria-content">
+        <p class="criteria-body">Checks a candidate's CV for specific skills, tools, languages, frameworks, or methodologies. Skills are organised into groups — you can have as many groups as you need.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Create a group:</strong> Add the skills you want to check for. For example, one group might be "Python, Machine Learning, Statistical analysis" and another "MLflow, Airflow, Spark".</p>
+        <p class="criteria-body"><strong style="color: var(--text);">AND vs OR matching:</strong> For each group, choose how skills are matched:</p>
+        <p class="criteria-body" style="padding-left: 16px;"><strong style="color: var(--text);">OR</strong> — candidate needs at least one from the group. Use when skills are interchangeable, e.g. "Python OR R OR Julia".</p>
+        <p class="criteria-body" style="padding-left: 16px;"><strong style="color: var(--text);">AND</strong> — candidate needs every skill in the group. Use when all are genuinely required together.</p>
+        <p class="criteria-body" style="margin-top: 10px;"><strong style="color: var(--text);">Note:</strong> Think carefully about what you group together. A broad OR group like "Python OR Excel OR SQL" would match a data engineer and an office administrator equally — if those candidates aren't interchangeable for the role, they probably shouldn't be in the same group.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Set a priority level:</strong> <span class="pk-dot reject" style="display:inline-block; vertical-align:middle;"></span> Reject if not met, <span class="pk-dot required" style="display:inline-block; vertical-align:middle;"></span> Required to shortlist, or <span class="pk-dot preferred" style="display:inline-block; vertical-align:middle;"></span> Preferred.</p>
+        <div class="screenshot" style="margin-top: 16px;">
+          <img src="check-skills-keywords.png" alt="Check skills and keywords screen">
+          <div class="screenshot-cap">The Check Skills and Keywords screen — add skill groups, choose AND/OR matching, and set importance.</div>
+        </div>
+
+    </details>
+
+    <details class="criteria-item">
+      <summary class="criteria-summary"><span class="dc-emoji">🎓</span> Education and Training</summary>
+      <div class="criteria-content">
+        <p class="criteria-body">Checks whether a candidate has specific qualifications or training. You can add multiple, each with its own importance level.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Subject or programme:</strong> What the qualification is in — e.g. "Computer Science", "Data Engineering", or "CIPD Level 5".</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Qualification type:</strong> Select the level — Bachelor's degree, Master's degree, PhD, Certification, Training, or Bootcamp.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Additional context:</strong> Optional free-text for specifics — e.g. "from a Russell Group university" or "must include a placement year".</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Set a priority level:</strong> <span class="pk-dot reject" style="display:inline-block; vertical-align:middle;"></span> Reject if not met, <span class="pk-dot required" style="display:inline-block; vertical-align:middle;"></span> Required to shortlist, or <span class="pk-dot preferred" style="display:inline-block; vertical-align:middle;"></span> Preferred.</p>
+        <div class="screenshot" style="margin-top: 16px;">
+          <img src="check-education-training.png" alt="Check education and training screen">
+          <div class="screenshot-cap">The Check Education and Training screen — add qualifications, select type, and set importance.</div>
+        </div>
+
+    </details>
+
+    <details class="criteria-item">
+      <summary class="criteria-summary"><span class="dc-emoji">✍️</span> Custom Prompt</summary>
+      <div class="criteria-content">
+        <p class="criteria-body">A catch-all for experience that doesn't fit the other categories. Describe what you're looking for in plain language and the AI reviews each candidate's CV for evidence of it.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Title:</strong> A short label for this criterion — e.g. "Production embedded systems" or "Platform migration leadership".</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Prompt:</strong> Describe the experience you want evidence of. Be specific — e.g. "Experience building and deploying autonomous vehicle software in production" or "Has led a team through a major platform migration".</p>
+        <p class="criteria-body"><strong style="color: var(--text);">Set a priority level:</strong> <span class="pk-dot reject" style="display:inline-block; vertical-align:middle;"></span> Reject if not met, <span class="pk-dot required" style="display:inline-block; vertical-align:middle;"></span> Required to shortlist, or <span class="pk-dot preferred" style="display:inline-block; vertical-align:middle;"></span> Preferred.</p>
+        <p class="criteria-body">You can add multiple custom prompts, each checking for something different with its own priority level.</p>
+        <div class="screenshot" style="margin-top: 16px;">
+          <img src="check-custom-prompt.png" alt="Check experience with custom prompt screen">
+          <div class="screenshot-cap">The Custom Prompt screen — add a title, describe the experience you're looking for, and set a priority level.</div>
+        </div>
+      
+    </details>
+
+  </div>
+
+  <div class="priority-key" style="margin-top: 28px; padding: 14px 20px; gap: 0; flex-direction: column;">
+    <p style="font-size: 13px; font-weight: 600; color: var(--text); margin: 0 0 6px 0;">Priority levels</p>
+    <p style="font-size: 12.5px; color: var(--text-secondary); margin: 0 0 8px 0; line-height: 1.5;">Each criterion above can be assigned one of these levels.</p>
+    <div class="pk-item" style="margin-bottom: 2px;"><div class="pk-dot reject"></div> <strong>Reject if not met</strong> — marked for rejection</div>
+    <div class="pk-item" style="margin-bottom: 2px;"><div class="pk-dot required"></div> <strong>Required to shortlist</strong> — must have to enter shortlist</div>
+    <div class="pk-item"><div class="pk-dot preferred"></div> <strong>Preferred</strong> — boosts score, won't reject</div>
+  </div>
+
+
+
+  <!-- ─── TEST KNOWLEDGE AND BEHAVIOUR ─── -->
+  </div>
+  </details>
+
+  <details class="substep">
+  <summary class="substep-summary">Test Knowledge and Behaviour</summary>
+  <div class="substep-content">
+
+  <p class="body-text">
+    Screening questions that go beyond what's on a CV. These test how a candidate thinks, how
+    they approach problems, and whether they have the depth the role needs. You add open-ended questions that candidates answer in their own words as part of the application. The AI evaluates each response against the intent of your question and factors it into the candidate's overall score.
+  </p>
+  <p class="body-text">
+    We'd recommend <strong>2 to 3 questions</strong> per role. That's enough to get meaningful signal without making the application too long. Think about the questions you'd normally ask at phone screen or first interview — and move them here instead.
+  </p>
+
+  <div style="text-align: center;">
+    <img src="test-knowledge-behaviour.png" alt="Test knowledge and behaviour" style="width:95%; border-radius: 8px; margin: 12px 0 8px;">
+  </div>
+
+  <div class="criteria-list">
+
+    <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 4px 0 -2px 0;"><span class="dc-emoji">⚙️</span> Technical Knowledge</p>
+    <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0 0; line-height: 1.6;">Test for specific technical depth. First you'll choose a format:</p>
+
+    <details class="criteria-item">
+      <summary class="criteria-summary"><span class="dc-emoji">💬</span> <span style="flex:1;"><strong>AI Interview</strong><br><span style="font-size:13px; font-weight:400; color:var(--text-secondary);">Conversational, AI-led interview on hard skills</span></span></summary>
+      <div class="criteria-content">
+        <p class="criteria-body">A conversational, AI-led interview on hard skills. The candidate answers your question, and the AI follows up to probe deeper — similar to a live phone screen, but automated.</p>
+        <p class="criteria-body">When you set up an AI Interview, you'll fill in four areas:</p>
+
+        <p class="criteria-body"><strong style="color: var(--text);">1. What do you want to test:</strong> Describe the skills you want the AI interviewer to assess. This gives the AI context on what to probe for — e.g. "real-time systems design" or "data pipeline architecture".</p>
+
+        <p class="criteria-body"><strong style="color: var(--text);">2. Select a question:</strong> The AI generates interview questions based on the job spec and the context you provided. Pick one, or write your own if you'd prefer something more specific.</p>
+
+        <p class="criteria-body"><strong style="color: var(--text);">3. Prompt guidance:</strong> Three fields that shape how the interview is scored:</p>
+        <p class="criteria-body" style="padding-left: 16px;"><strong style="color: var(--text);">Candidate guidance</strong> — context the AI can share with the candidate to help them answer accurately.</p>
+        <p class="criteria-body" style="padding-left: 16px;"><strong style="color: var(--text);">Acceptable answer</strong> — describe what a satisfactory response looks like, so the AI knows the minimum bar.</p>
+        <p class="criteria-body" style="padding-left: 16px;"><strong style="color: var(--text);">Great answer</strong> — a customisable scoring rubric that defines what an outstanding response looks like.</p>
+
+        <p class="criteria-body"><strong style="color: var(--text);">4. Advanced settings:</strong> This is where you set the priority level — <span class="pk-dot preferred" style="display:inline-block; vertical-align:middle;"></span> Preferred, <span class="pk-dot required" style="display:inline-block; vertical-align:middle;"></span> Required to shortlist, or <span class="pk-dot reject" style="display:inline-block; vertical-align:middle;"></span> Reject if not met.</p>
+      </div>
+    </details>
+
+    <details class="criteria-item">
+      <summary class="criteria-summary"><span class="dc-emoji">📝</span> <span style="flex:1;"><strong>Review Code Snippet</strong><br><span style="font-size:13px; font-weight:400; color:var(--text-secondary);">Candidate reviews code and identifies issues</span></span></summary>
+      <div class="criteria-content">
+        <p class="criteria-body">The candidate reviews a code snippet and identifies issues. The AI evaluates their response for technical understanding, not just whether they spotted a specific bug. Useful for roles where reading and reasoning about code matters as much as writing it.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">1. Skills to test:</strong> Pick a skill for the code review — e.g. "Python", "React", or "SQL".</p>
+        <p class="criteria-body"><strong style="color: var(--text);">2. Difficulty:</strong> Choose a level — Junior, Intermediate, or Senior. This controls the complexity of the code snippet generated.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">3. Review and edit:</strong> Hit Generate and the AI will create the question. You can enable <strong>strict mode</strong>, which tracks tab switches, copy and paste, and other activity during the review.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">4. Great answer criteria:</strong> Describe what a great answer looks like — this tells the AI what to reward when scoring responses.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">5. Snippet and answers:</strong> Fine-tune any details around the question, code snippet, or expected answers.</p>
+        <p class="criteria-body"><strong style="color: var(--text);">6. Advanced settings:</strong> Set the priority level — <span class="pk-dot preferred" style="display:inline-block; vertical-align:middle;"></span> Preferred, <span class="pk-dot required" style="display:inline-block; vertical-align:middle;"></span> Required to shortlist, or <span class="pk-dot reject" style="display:inline-block; vertical-align:middle;"></span> Reject if not met.</p>
+      </div>
+    </details>
+
+    <p style="font-size: 15px; font-weight: 700; color: var(--text); margin: 16px 0 -2px 0;"><span class="dc-emoji">🤝</span> Behaviours and Questions</p>
+    <p style="font-size: 14.5px; color: var(--text-secondary); margin: 4px 0 0 0; line-height: 1.6;">Understand how someone works in practice — their problem-solving style, communication, and approach under pressure.</p>
+
+    <details class="criteria-item">
+      <summary class="criteria-summary"><span class="dc-emoji">💬</span> <span style="flex:1;"><strong>Behavioural questions</strong><br><span style="font-size:13px; font-weight:400; color:var(--text-secondary);">Open-ended questions on problem-solving, communication, and approach</span></span></summary>
+      <div class="criteria-content">
+        <p class="criteria-body">Open-ended questions that reveal how a candidate thinks and operates — same flow as AI Interview. For example: "Share an experience where you worked with unclear or incomplete requirements. How did you approach the situation and ensure successful delivery?"</p>
+
+        <p class="criteria-body"><strong style="color: var(--text);">1. What do you want to test:</strong> Describe the behaviours or soft skills you want the AI to assess — e.g. "collaboration under pressure" or "stakeholder management".</p>
+
+        <p class="criteria-body"><strong style="color: var(--text);">2. Select a question:</strong> The AI generates questions based on the job spec and context you provided. Pick one, or write your own.</p>
+
+        <p class="criteria-body"><strong style="color: var(--text);">3. Prompt guidance:</strong> Three fields that shape how the interview is scored:</p>
+        <p class="criteria-body" style="padding-left: 16px;"><strong style="color: var(--text);">Candidate guidance</strong> — context the AI can share with the candidate to help them answer accurately.</p>
+        <p class="criteria-body" style="padding-left: 16px;"><strong style="color: var(--text);">Acceptable answer</strong> — describe what a satisfactory response looks like, so the AI knows the minimum bar.</p>
+        <p class="criteria-body" style="padding-left: 16px;"><strong style="color: var(--text);">Great answer</strong> — describe what an outstanding response looks like.</p>
+
+        <p class="criteria-body"><strong style="color: var(--text);">4. Advanced settings:</strong> Set the priority level — <span class="pk-dot preferred" style="display:inline-block; vertical-align:middle;"></span> Preferred, <span class="pk-dot required" style="display:inline-block; vertical-align:middle;"></span> Required to shortlist, or <span class="pk-dot reject" style="display:inline-block; vertical-align:middle;"></span> Reject if not met.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-label">Tip</div>
+    <div class="callout-body">
+      The best screening questions are ones where a strong candidate's answer will sound noticeably
+      different to a weak candidate's. Avoid questions with a single correct answer — those don't
+      give the AI much to differentiate on.
+    </div>
+  </div>
+
+
+  </div>
+  </details>
+
+</div>
+  </div>
+
+  <div class="step">
+  <div class="step-summary"><span class="step-label">Step 3.</span> Review candidates and refine criteria</div>
+  <div class="step-content">
+
+  <p class="body-text">
+    Candidates who apply are screened against everything you've configured — requirements, skills, and question responses. Each candidate receives a score and is sorted automatically:
+  </p>
+
+  <p class="body-text" style="padding-left: 16px;">
+    <strong style="color: var(--text);">Shortlist</strong> — candidates who meet all your required-to-shortlist criteria are pushed straight into the shortlist.<br>
+    <strong style="color: var(--text);">Inbox</strong> — everyone else appears in an ordered list, ranked from strongest to weakest.<br>
+    <strong style="color: var(--text);">Not a fit</strong> — anyone missing minimum requirements is flagged as not a fit.
+  </p>
+
+  <p class="body-text">
+    From there, your candidates are ready for you to manage and prioritise your time with the strongest applicants first. All actions sync back to Greenhouse automatically.
+  </p>
+
+  <p class="body-text">
+    When you shortlist a candidate, they're pushed through to Phone Screen in Greenhouse. When you reject a candidate, they're rejected in Greenhouse too.
+  </p>
+
+  <p class="body-text">
+    Any changes you make to your criteria can reassess all existing candidates, so rankings always reflect the latest setup. Use this to refine as you go.
+  </p>
+
+  <div style="text-align: center;">
+    <img src="review-candidates.png" alt="Review candidates" style="width:95%; border-radius: 8px; margin: 12px 0 8px;">
+  </div>
+
+  </div>
+  </div>
+
+
+
+
+
+  <!-- ═══════════════════ SUPPORT ═══════════════════ -->
+  <div class="support">
+    <h3>Questions?</h3>
+    <p>
+      If anything's unclear or you get stuck, reach out to your First contact or email
+      <a href="mailto:support@firststage.co">support@firststage.co</a>
+    </p>
+  </div>
+
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <div class="footer">
+    <div class="footer-logo">first</div>
+    <div>© OpenDigital Limited 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
